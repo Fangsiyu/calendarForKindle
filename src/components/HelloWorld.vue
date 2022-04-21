@@ -1,40 +1,85 @@
-<script setup>
-import { ref } from 'vue'
-
-defineProps({
-  msg: String
-})
-
-const count = ref(0)
-</script>
 
 <template>
-  <h1>{{ msg }}</h1>
-
-  <p>
-    Recommended IDE setup:
-    <a href="https://code.visualstudio.com/" target="_blank">VS Code</a>
-    +
-    <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>
-  </p>
-
-  <p>
-    <a href="https://vitejs.dev/guide/features.html" target="_blank">
-      Vite Documentation
-    </a>
-    |
-    <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Documentation</a>
-  </p>
-
-  <button type="button" @click="count++">count is: {{ count }}</button>
-  <p>
-    Edit
-    <code>components/HelloWorld.vue</code> to test hot module replacement.
-  </p>
+  <el-row>
+    <div class="content">
+      <div v-for="(date, i) in dateList" :key="i" class="page-a5">
+        <div class="text">
+          <h3>{{ date.month }} - {{ date.day }}</h3>
+          <h5>{{ date.year }}</h5>
+        </div>
+      </div>
+    </div>
+  </el-row>
 </template>
+
+<script>
+import dayjs from "dayjs";
+export default {
+  data() {
+    return {
+      dateList: [],
+    };
+  },
+  mounted() {
+    this.getDateList();
+  },
+  methods: {
+    getDateList() {
+      let dateArr = [];
+      for (let i = 0; i < 365; i++) {
+        dateArr.push({
+          year: dayjs().add(i, "day").format("YYYY"),
+          month: dayjs().add(i, "day").format("MM"),
+          day: dayjs().add(i, "day").format("DD"),
+        });
+      }
+      this.dateList = dateArr;
+    },
+  },
+};
+</script>
+
+
 
 <style scoped>
 a {
   color: #42b983;
+}
+.content {
+}
+.page-a5 {
+  width: 148mm;
+  height: 210mm;
+  /* border: 1px solid #000; */
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  page-break-before: always;
+  line-height: 2;
+}
+.page-a5 .text {
+  width: 140mm;
+  height: 200mm;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.page-a5 h3 {
+  width: 90%;
+  font-size: 60px;
+  color: #fff;
+  background-color: #000;
+  text-align: center;
+  padding: 20px;
+  border-radius: 20px;
+}
+.page-a5 h5 {
+  width: 100%;
+  font-size: 30px;
+  text-align: center;
+  margin-top: 30mm;
+  color: #ccc;
 }
 </style>
