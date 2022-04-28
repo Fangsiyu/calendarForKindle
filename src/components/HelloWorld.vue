@@ -13,7 +13,7 @@
             >
           </h3>
 
-          <h5>{{ date.lunar.Animal }}{{ date.lunar.AnimalEmoji }}</h5>
+          <h5 class="animal">{{ date.lunar.Animal }}{{ date.lunar.AnimalEmoji }}</h5>
           <h5>{{ date.year }}</h5>
         </div>
       </div>
@@ -96,6 +96,9 @@ a {
       text-align: center;
       margin-top: 30mm;
       color: #ccc;
+    }
+    >.animal{
+      font-size: 40px;
     }
   }
 }
