@@ -4,6 +4,7 @@
     <div class="content">
       <div v-for="(date, i) in dateList" :key="i" class="page-a5">
         <div class="text">
+          <h5 class="year">{{ date.year }}</h5>
           <h3>
             {{ date.month }} - {{ date.day }}
             <span class="tips"
@@ -12,8 +13,12 @@
               }}日-{{ date.lunar.IMonthCn }}{{ date.lunar.IDayCn }}</span
             >
           </h3>
-          <h5>{{ date.year }} <br> {{ date.lunar.Animal }}{{ date.lunar.AnimalEmoji }}</h5>
+          <h5 class="year-emoji">{{ date.lunar.AnimalEmoji }}</h5>
+          <!-- <h5>
+            {{ date.lunar.Animal }}
+          </h5> -->
         </div>
+        <h6 class="footer">Calendar For Kindle</h6>
       </div>
     </div>
   </el-row>
@@ -57,20 +62,21 @@ export default {
 a {
   color: #42b983;
 }
-.content{
-    margin: 0 auto;
+.content {
+  margin: 0 auto;
 }
 .page-a5 {
+  position: relative;
   width: 148mm;
   height: 210mm;
-  border: 1px solid #000;
+  // border: 1px solid #000;
   border-radius: 20px;
-  display: flex;
-  align-items: center;
+  // display: flex;
+  // align-items: center;
   font-weight: bold;
   page-break-before: always;
-  line-height: 2;
   > .text {
+    margin: 0 auto;
     width: 140mm;
     height: 200mm;
     display: flex;
@@ -78,28 +84,48 @@ a {
     justify-content: center;
     align-items: center;
     > h3 {
+      display: block;
+      margin-top: 10mm;
       width: 90%;
-      font-size: 60px;
+      font-size: 70px;
       color: #fff;
       background-color: #000;
       text-align: center;
-      padding: 20px;
+      padding: 20mm 0;
       border-radius: 20px;
+      font-family: "Courgette", cursive;
+      box-shadow: 0 16px 6px 1px rgb(201, 199, 199);
       > .tips {
         display: block;
         font-size: 14px;
+        margin-top: 10mm;
       }
     }
     > h5 {
       width: 100%;
+      margin: 0;
       font-size: 30px;
       text-align: center;
-      margin-top: 30mm;
       color: #ccc;
     }
-    >.animal{
-      font-size: 40px;
+    >.year{
+      margin-top: 10px;
     }
+    >.year-emoji{
+      margin-top: 10px;
+    }
+    > .animal {
+      font-size: 20px;
+    }
+  }
+  > .footer {
+    width: 100%;
+    position: absolute;
+    bottom: 10mm;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: "Courgette", cursive;
   }
 }
 </style>
