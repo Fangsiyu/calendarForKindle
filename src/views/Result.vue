@@ -12,9 +12,7 @@
               }}日-{{ date.lunar.IMonthCn }}{{ date.lunar.IDayCn }}</span
             >
           </h3>
-
-          <h5 class="animal">{{ date.lunar.Animal }}{{ date.lunar.AnimalEmoji }}</h5>
-          <h5>{{ date.year }}</h5>
+          <h5>{{ date.year }} <br> {{ date.lunar.Animal }}{{ date.lunar.AnimalEmoji }}</h5>
         </div>
       </div>
     </div>
@@ -46,7 +44,6 @@ export default {
             dayjs().add(i, "day").format("DD")
           ),
         });
-        console.log(dateArr[i]);
       }
       this.dateList = dateArr;
     },
@@ -59,6 +56,9 @@ export default {
 <style lang="less" scoped>
 a {
   color: #42b983;
+}
+.content{
+    margin: 0 auto;
 }
 .page-a5 {
   width: 148mm;
