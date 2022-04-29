@@ -1,7 +1,25 @@
-# Vue 3 + Vite
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+# Calendar For Kindle
+## 功能列表
 
-## Recommended IDE Setup
+- [x] 年月日显示
+- [x] 农历显示
+- [x] 年份 Emoji
+- [x] [Google Fonts](https://fonts.google.com/) 引入
+- [ ] 每日进度条（相对当年进度）
+- [ ] 增加配置预览
+- [ ] 自定义配置
+- [ ] ...
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)
+
+### 使用 
+
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
