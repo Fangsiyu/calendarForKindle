@@ -25,13 +25,8 @@
       <el-form-item label="当日进度">
         <el-switch v-model="form.progress" />
       </el-form-item>
-      <el-form-item label="水印">
-        <el-radio-group v-model="form.resource">
-          <el-radio label="左上" />
-          <el-radio label="右上" />
-          <el-radio label="左下" />
-          <el-radio label="右下" />
-        </el-radio-group>
+      <el-form-item label="显示水印">
+        <el-switch v-model="form.resource" />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="onSubmit">生成</el-button>

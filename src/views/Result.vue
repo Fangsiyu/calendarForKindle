@@ -2,43 +2,56 @@
 <template>
   <div v-for="(date, i) in dateList" :key="i" class="page-a5">
     <div class="body">
-      <h5 class="year">{{ date.year }}</h5>
+      <h5 class="year">{{ date.year }} - {{ date.month }}</h5>
+      {{ emoji }}
       <div class="content">
-        {{ date.month }} - {{ date.day }}
+        {{ date.day }}
         <span class="tips"
-          >{{ date.lunar.gzYear }}年-{{ date.lunar.gzMonth }}月-{{
+          >{{ date.lunar.gzYear }}年·{{ date.lunar.gzMonth }}月·{{
             date.lunar.gzDay
-          }}日-{{ date.lunar.IMonthCn }}{{ date.lunar.IDayCn }}</span
+          }}日·{{ date.lunar.IMonthCn }}{{ date.lunar.IDayCn }}</span
         >
       </div>
       <h5 class="year-emoji">{{ date.lunar.AnimalEmoji }}</h5>
-      <!-- <h5>
-            {{ date.lunar.Animal }}
-          </h5> -->
+      <cProgress
+        class="progress"
+        :date="date.date"
+        :icon="date.lunar.AnimalEmoji"
+        width="80"
+      ></cProgress>
     </div>
+
     <h6 class="footer">Calendar For Kindle By Xiaoxin</h6>
   </div>
 </template>
 
 <script>
 import dayjs from "dayjs";
+import cProgress from "../components/cProgress.vue";
+
 export default {
   data() {
     return {
       dateList: [],
+      emoji: "",
     };
+  },
+  components: {
+    cProgress,
   },
   mounted() {
     this.getDateList();
-    setTimeout(() => {
-      window.print();
-    }, 1000);
+
+    // setTimeout(() => {
+    //   window.print();
+    // }, 1000);
   },
   methods: {
     getDateList() {
       let dateArr = [];
       for (let i = 0; i < 365; i++) {
         dateArr.push({
+          date: dayjs().add(i, "day").toDate(),
           year: dayjs().add(i, "day").format("YYYY"),
           month: dayjs().add(i, "day").format("MM"),
           day: dayjs().add(i, "day").format("DD"),
@@ -58,9 +71,6 @@ export default {
 
 
 <style lang="less" scoped>
-.content {
-  margin: 0 auto;
-}
 .page-a5 {
   position: relative;
   width: 100%;
@@ -81,18 +91,21 @@ export default {
       display: block;
       margin-top: 5mm;
       width: 100%;
-      font-size: 70px;
+      font-size: 100px;
       color: #fff;
+      font-weight: 400;
       background-color: #000;
       text-align: center;
       padding: 10mm 0;
       border-radius: 20px;
       font-family: "Orelega One", cursive;
+      letter-spacing: 2mm;
       > .tips {
         display: block;
         font-size: 14px;
         margin-top: 5mm;
         font-family: "Noto Serif SC", serif;
+        letter-spacing: 1mm;
       }
     }
     > h5 {
@@ -103,14 +116,19 @@ export default {
       color: #ccc;
     }
     > .year {
+      font-size: 40px;
       margin-top: 5mm;
-      font-family: "Caveat", cursive;
+      // font-family: "Caveat", cursive;
+      font-family: "Noto Serif SC", serif;
     }
     > .year-emoji {
       margin-top: 5mm;
     }
     > .animal {
       font-size: 20px;
+    }
+    > .progress {
+      margin-top: 5mm;
     }
   }
   > .footer {
