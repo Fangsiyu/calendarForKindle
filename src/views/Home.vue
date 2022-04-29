@@ -94,7 +94,11 @@ const onSubmit = () => {
   width: 500px;
   margin: 30px auto;
   > h3 {
-    font-family: "Courgette", cursive;
+    font-family: "Caveat", cursive;
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
   }
 }
 </style>

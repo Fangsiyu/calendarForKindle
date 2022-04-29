@@ -87,22 +87,24 @@ export default {
       text-align: center;
       padding: 10mm 0;
       border-radius: 20px;
-      font-family: "Courgette", cursive;
+      font-family: "Orelega One", cursive;
       > .tips {
         display: block;
         font-size: 14px;
         margin-top: 5mm;
+        font-family: "Noto Serif SC", serif;
       }
     }
     > h5 {
       width: 100%;
       margin-top: 5mm;
-      font-size: 30px;
+      font-size: 40px;
       text-align: center;
       color: #ccc;
     }
     > .year {
       margin-top: 5mm;
+      font-family: "Caveat", cursive;
     }
     > .year-emoji {
       margin-top: 5mm;
@@ -118,7 +120,7 @@ export default {
     left: 0;
     right: 0;
     text-align: center;
-    font-family: "Courgette", cursive;
+    font-family: "Caveat", cursive;
   }
 }
 </style>
