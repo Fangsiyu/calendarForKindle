@@ -41,7 +41,7 @@
   </div>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 import { reactive } from "vue";
 import router from "../router";
 // do not use same name with ref

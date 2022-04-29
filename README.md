@@ -8,8 +8,9 @@
 - [x] [Google Fonts](https://fonts.google.com/) 引入
 - [ ] 每日进度条（相对当年进度）
 - [ ] 随机 Emoji
+- [ ] 水印配置
 - [ ] 增加配置预览
-- [ ] 水印
+- [ ] 生成 kindle 尺寸选择
 - [ ] 自定义配置
 - [ ] ...
 

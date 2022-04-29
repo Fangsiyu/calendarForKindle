@@ -1,27 +1,23 @@
 
 <template>
-  <el-row>
-    <div class="content">
-      <div v-for="(date, i) in dateList" :key="i" class="page-a5">
-        <div class="text">
-          <h5 class="year">{{ date.year }}</h5>
-          <h3>
-            {{ date.month }} - {{ date.day }}
-            <span class="tips"
-              >{{ date.lunar.gzYear }}年-{{ date.lunar.gzMonth }}月-{{
-                date.lunar.gzDay
-              }}日-{{ date.lunar.IMonthCn }}{{ date.lunar.IDayCn }}</span
-            >
-          </h3>
-          <h5 class="year-emoji">{{ date.lunar.AnimalEmoji }}</h5>
-          <!-- <h5>
+  <div v-for="(date, i) in dateList" :key="i" class="page-a5">
+    <div class="body">
+      <h5 class="year">{{ date.year }}</h5>
+      <div class="content">
+        {{ date.month }} - {{ date.day }}
+        <span class="tips"
+          >{{ date.lunar.gzYear }}年-{{ date.lunar.gzMonth }}月-{{
+            date.lunar.gzDay
+          }}日-{{ date.lunar.IMonthCn }}{{ date.lunar.IDayCn }}</span
+        >
+      </div>
+      <h5 class="year-emoji">{{ date.lunar.AnimalEmoji }}</h5>
+      <!-- <h5>
             {{ date.lunar.Animal }}
           </h5> -->
-        </div>
-        <h6 class="footer">Calendar For Kindle By Xiaoxin</h6>
-      </div>
     </div>
-  </el-row>
+    <h6 class="footer">Calendar For Kindle By Xiaoxin</h6>
+  </div>
 </template>
 
 <script>
@@ -34,6 +30,9 @@ export default {
   },
   mounted() {
     this.getDateList();
+    setTimeout(() => {
+      window.print();
+    }, 1000);
   },
   methods: {
     getDateList() {
@@ -59,59 +58,54 @@ export default {
 
 
 <style lang="less" scoped>
-a {
-  color: #42b983;
-}
 .content {
   margin: 0 auto;
 }
 .page-a5 {
   position: relative;
-//   width: 148mm;
-//   height: 210mm;
-  // border: 1px solid #000;
+  width: 100%;
+  padding: 5mm;
+  width: 148mm;
+  height: 210mm;
+  border: 1px solid #000;
   border-radius: 20px;
-  // display: flex;
-  // align-items: center;
   font-weight: bold;
   page-break-before: always;
-  > .text {
-    margin: 0 auto;
-    width: 140mm;
-    height: 200mm;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    > h3 {
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  > .body {
+    width: 100%;
+    > .content {
       display: block;
-      margin-top: 10mm;
-      width: 90%;
+      margin-top: 5mm;
+      width: 100%;
       font-size: 70px;
       color: #fff;
       background-color: #000;
       text-align: center;
-      padding: 20mm 0;
+      padding: 10mm 0;
       border-radius: 20px;
       font-family: "Courgette", cursive;
       > .tips {
         display: block;
         font-size: 14px;
-        margin-top: 10mm;
+        margin-top: 5mm;
       }
     }
     > h5 {
       width: 100%;
-      margin: 0;
+      margin-top: 5mm;
       font-size: 30px;
       text-align: center;
       color: #ccc;
     }
-    >.year{
-      margin-top: 10px;
+    > .year {
+      margin-top: 5mm;
     }
-    >.year-emoji{
-      margin-top: 10px;
+    > .year-emoji {
+      margin-top: 5mm;
     }
     > .animal {
       font-size: 20px;
@@ -120,7 +114,7 @@ a {
   > .footer {
     width: 100%;
     position: absolute;
-    bottom: 10mm;
+    bottom: 5mm;
     left: 0;
     right: 0;
     text-align: center;
