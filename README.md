@@ -6,8 +6,7 @@
 - [x] 农历显示
 - [x] 年份 Emoji
 - [x] [Google Fonts](https://fonts.google.com/) 引入
-- [ ] 每日进度条（相对当年进度）
-- [ ] 随机 Emoji
+- [x] 每日进度条（相对当年进度）
 - [ ] 水印配置
 - [ ] 增加配置预览
 - [ ] 生成 kindle 尺寸选择

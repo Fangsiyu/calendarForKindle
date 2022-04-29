@@ -26,7 +26,10 @@
         <el-switch v-model="form.progress" />
       </el-form-item>
       <el-form-item label="显示水印">
-        <el-switch v-model="form.resource" />
+        <el-switch v-model="form.watermark" />
+      </el-form-item>
+      <el-form-item v-show="form.watermark" label="自定义水印">
+        <el-input v-model="form.watermarkText" placeholder="自定义水印" />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="onSubmit">生成</el-button>
@@ -48,8 +51,8 @@ const form = reactive({
   calendar: true,
   emoji: true,
   progress: true,
-  type: [],
-  resource: "",
+  watermark: true,
+  watermarkText: "Calendar For Kindle",
   desc: "",
 });
 const shortcuts = [
