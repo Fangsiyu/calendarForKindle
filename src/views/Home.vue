@@ -1,9 +1,14 @@
 <template>
   <div class="index">
     <h3>Calendar For Kindle</h3>
-    <el-form :model="form" label-width="120px" label-position="left">
+    <el-form
+      :model="form"
+      label-width="120px"
+      ref="formRef"
+      label-position="left"
+    >
       <el-form-item label="生成文件名">
-        <el-input v-model="form.name" placeholder="生成文件名" />
+        <el-input v-model="form.name" placeholder="生成文件名" clearable />
       </el-form-item>
       <el-form-item label="时间范围">
         <el-date-picker
@@ -29,18 +34,23 @@
         <el-switch v-model="form.watermark" />
       </el-form-item>
       <el-form-item v-show="form.watermark" label="自定义水印">
-        <el-input v-model="form.watermarkText" placeholder="自定义水印" />
+        <el-input
+          v-model="form.watermarkText"
+          placeholder="自定义水印"
+          clearable
+        />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="onSubmit">生成</el-button>
-        <el-button>重置</el-button>
+        <el-button @click="resetForm">重置</el-button>
       </el-form-item>
     </el-form>
   </div>
 </template>
 
 <script setup>
-import { reactive } from "vue";
+import { ref, reactive, onMounted, getCurrentInstance, unref } from "vue";
+
 import router from "../router";
 // do not use same name with ref
 const form = reactive({
@@ -86,6 +96,12 @@ const onSubmit = () => {
   console.log("submit!");
   router.push("/result");
 };
+const formRef = ref(null);
+const resetForm = () => {
+  location.reload();
+};
+onMounted(() => {
+});
 </script>
 <style lang="less" scoped>
 .index {
