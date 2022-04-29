@@ -18,7 +18,7 @@
             {{ date.lunar.Animal }}
           </h5> -->
         </div>
-        <h6 class="footer">Calendar For Kindle</h6>
+        <h6 class="footer">Calendar For Kindle By Xiaoxin</h6>
       </div>
     </div>
   </el-row>
@@ -67,8 +67,8 @@ a {
 }
 .page-a5 {
   position: relative;
-  width: 148mm;
-  height: 210mm;
+//   width: 148mm;
+//   height: 210mm;
   // border: 1px solid #000;
   border-radius: 20px;
   // display: flex;
@@ -94,7 +94,6 @@ a {
       padding: 20mm 0;
       border-radius: 20px;
       font-family: "Courgette", cursive;
-      box-shadow: 0 16px 6px 1px rgb(201, 199, 199);
       > .tips {
         display: block;
         font-size: 14px;

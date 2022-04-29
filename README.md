@@ -7,7 +7,9 @@
 - [x] 年份 Emoji
 - [x] [Google Fonts](https://fonts.google.com/) 引入
 - [ ] 每日进度条（相对当年进度）
+- [ ] 随机 Emoji
 - [ ] 增加配置预览
+- [ ] 水印
 - [ ] 自定义配置
 - [ ] ...
 
