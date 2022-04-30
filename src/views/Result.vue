@@ -77,7 +77,7 @@ export default {
   padding: 5mm;
   width: 148mm;
   height: 210mm;
-  border: 1px solid #000;
+  // border: 1px solid #000;
   border-radius: 20px;
   font-weight: bold;
   page-break-before: always;
@@ -96,7 +96,7 @@ export default {
       font-weight: 400;
       background-color: #000;
       text-align: center;
-      padding: 10mm 0;
+      padding: 20mm 0;
       border-radius: 20px;
       font-family: "Orelega One", cursive;
       letter-spacing: 2mm;
