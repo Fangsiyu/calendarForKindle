@@ -13,7 +13,7 @@
       <el-form-item label="时间范围">
         <el-date-picker
           v-model="form.dateRange"
-          type="monthrange"
+          type="daterange"
           range-separator="~"
           unlink-panels
           start-placeholder="开始日期"

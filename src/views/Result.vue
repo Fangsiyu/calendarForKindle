@@ -12,9 +12,11 @@
           }}日·{{ date.lunar.IMonthCn }}{{ date.lunar.IDayCn }}</span
         >
       </div>
-      <h5 v-show="form.emoji" class="year-emoji">{{ date.lunar.AnimalEmoji }}</h5>
+      <h5 v-show="form.emoji" class="year-emoji">
+        {{ date.lunar.AnimalEmoji }}
+      </h5>
       <cProgress
-      v-show="form.progress"
+        v-show="form.progress"
         class="progress"
         :date="date.date"
         :icon="date.lunar.AnimalEmoji"
@@ -22,7 +24,7 @@
       ></cProgress>
     </div>
 
-    <h6 v-show="form.watermark" class="footer">{{form.watermarkText}}</h6>
+    <h6 v-show="form.watermark" class="footer">{{ form.watermarkText }}</h6>
   </div>
 </template>
 
@@ -42,7 +44,7 @@ export default {
         emoji: true,
         progress: true,
         watermark: true,
-        watermarkText: "" || 'Calendar For Kindle By Xiaoxin',
+        watermarkText: "" || "Calendar For Kindle By Xiaoxin",
         desc: "",
       },
     };
@@ -51,7 +53,7 @@ export default {
     cProgress,
   },
   mounted() {
-    console.log(JSON.parse(this.$route.query.form))
+    console.log(JSON.parse(this.$route.query.form));
     this.form = Object.assign(this.form, JSON.parse(this.$route.query.form));
     this.init();
 
@@ -61,26 +63,48 @@ export default {
   },
   methods: {
     //初始化
-    init(){
+    init() {
       document.title = this.form.name; //设置网页标题
       this.getDateList();
-
     },
     getDateList() {
       let dateArr = [];
-      for (let i = 0; i < 365; i++) {
+      let start = dayjs(this.form.dateRange[0]).valueOf();
+      let end = dayjs(this.form.dateRange[1]).valueOf();
+      let i = 1;
+      while (start <= end) {
+        
+        // dateArr.push(dayjs(start));
+        // start = dayjs(start).add(1, "day");
         dateArr.push({
-          date: dayjs().add(i, "day").toDate(),
-          year: dayjs().add(i, "day").format("YYYY"),
-          month: dayjs().add(i, "day").format("MM"),
-          day: dayjs().add(i, "day").format("DD"),
+          date: dayjs(this.form.dateRange[0]).add(i, "day").toDate(),
+          year: dayjs(this.form.dateRange[0]).add(i, "day").format("YYYY"),
+          month: dayjs(this.form.dateRange[0]).add(i, "day").format("MM"),
+          day: dayjs(this.form.dateRange[0]).add(i, "day").format("DD"),
           lunar: calendar.solar2lunar(
-            dayjs().add(i, "day").format("YYYY"),
-            dayjs().add(i, "day").format("MM"),
-            dayjs().add(i, "day").format("DD")
+            dayjs(this.form.dateRange[0]).add(i, "day").format("YYYY"),
+            dayjs(this.form.dateRange[0]).add(i, "day").format("MM"),
+            dayjs(this.form.dateRange[0]).add(i, "day").format("DD")
           ),
         });
+        console.log(dateArr);
+        i++;
+        start = dayjs(start).add(1, "day").valueOf();
       }
+      // for (let i = 0; i < 365; i++) {
+      //   dateArr.push({
+      //     date: dayjs().add(i, "day"
+      //     ).toDate(),
+      //     year: dayjs().add(i, "day").format("YYYY"),
+      //     month: dayjs().add(i, "day").format("MM"),
+      //     day: dayjs().add(i, "day").format("DD"),
+      //     lunar: calendar.solar2lunar(
+      //       dayjs().add(i, "day").format("YYYY"),
+      //       dayjs().add(i, "day").format("MM"),
+      //       dayjs().add(i, "day").format("DD")
+      //     ),
+      //   });
+      // }
       this.dateList = dateArr;
     },
   },
