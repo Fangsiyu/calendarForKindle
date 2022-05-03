@@ -8,7 +8,7 @@
 - [x] [Google Fonts](https://fonts.google.com/) 引入
 - [x] 每日进度条（相对当年进度）
 - [x] 水印配置
-- [ ] 增加配置预览
+- [x] 增加配置预览
 - [ ] 生成 kindle 尺寸选择
 - [x] 自定义配置
 - [ ] ...
