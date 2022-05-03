@@ -6,14 +6,15 @@
       {{ emoji }}
       <div class="content">
         {{ date.day }}
-        <span class="tips"
+        <span v-show="form.calendar" class="tips"
           >{{ date.lunar.gzYear }}年·{{ date.lunar.gzMonth }}月·{{
             date.lunar.gzDay
           }}日·{{ date.lunar.IMonthCn }}{{ date.lunar.IDayCn }}</span
         >
       </div>
-      <h5 class="year-emoji">{{ date.lunar.AnimalEmoji }}</h5>
+      <h5 v-show="form.emoji" class="year-emoji">{{ date.lunar.AnimalEmoji }}</h5>
       <cProgress
+      v-show="form.progress"
         class="progress"
         :date="date.date"
         :icon="date.lunar.AnimalEmoji"
@@ -21,7 +22,7 @@
       ></cProgress>
     </div>
 
-    <h6 class="footer">Calendar For Kindle By Xiaoxin</h6>
+    <h6 v-show="form.watermark" class="footer">{{form.watermarkText}}</h6>
   </div>
 </template>
 
@@ -34,19 +35,37 @@ export default {
     return {
       dateList: [],
       emoji: "",
+      form: {
+        name: "",
+        dateRange: [],
+        calendar: true,
+        emoji: true,
+        progress: true,
+        watermark: true,
+        watermarkText: "" || 'Calendar For Kindle By Xiaoxin',
+        desc: "",
+      },
     };
   },
   components: {
     cProgress,
   },
   mounted() {
-    this.getDateList();
+    console.log(JSON.parse(this.$route.query.form))
+    this.form = Object.assign(this.form, JSON.parse(this.$route.query.form));
+    this.init();
 
     // setTimeout(() => {
     //   window.print();
     // }, 1000);
   },
   methods: {
+    //初始化
+    init(){
+      document.title = this.form.name; //设置网页标题
+      this.getDateList();
+
+    },
     getDateList() {
       let dateArr = [];
       for (let i = 0; i < 365; i++) {

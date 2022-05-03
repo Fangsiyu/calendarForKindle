@@ -55,14 +55,12 @@ import router from "../router";
 // do not use same name with ref
 const form = reactive({
   name: "Calendar For Kindle",
-  region: "",
   dateRange: [],
-  date2: "",
   calendar: true,
   emoji: true,
   progress: true,
   watermark: true,
-  watermarkText: "Calendar For Kindle",
+  watermarkText: "Calendar For Kindle By Xiaoxin",
   desc: "",
 });
 const shortcuts = [
@@ -94,13 +92,19 @@ const shortcuts = [
 
 const onSubmit = () => {
   console.log("submit!");
-  router.push("/result");
+  router.push({
+    name: "result",
+    query: {
+      form: JSON.stringify(form)
+    },
+  });
 };
 const formRef = ref(null);
 const resetForm = () => {
   location.reload();
 };
 onMounted(() => {
+  form.dateRange = [new Date(), new Date(new Date().getFullYear() + 1, new Date().getMonth())];
 });
 </script>
 <style lang="less" scoped>
