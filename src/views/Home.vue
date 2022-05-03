@@ -19,6 +19,7 @@
           start-placeholder="开始日期"
           end-placeholder="结束日期"
           :shortcuts="shortcuts"
+          :clearable="false"
         />
       </el-form-item>
       <el-form-item label="显示农历">
@@ -84,7 +85,7 @@ const shortcuts = [
     text: "三年",
     value: () => {
       const start = new Date();
-      const end = new Date(new Date().getFullYear() + 2, new Date().getMonth());
+      const end = new Date(new Date().getFullYear() + 3, new Date().getMonth());
       return [start, end];
     },
   },
