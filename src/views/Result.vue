@@ -87,24 +87,9 @@ export default {
             dayjs(this.form.dateRange[0]).add(i, "day").format("DD")
           ),
         });
-        console.log(dateArr);
         i++;
         start = dayjs(start).add(1, "day").valueOf();
       }
-      // for (let i = 0; i < 365; i++) {
-      //   dateArr.push({
-      //     date: dayjs().add(i, "day"
-      //     ).toDate(),
-      //     year: dayjs().add(i, "day").format("YYYY"),
-      //     month: dayjs().add(i, "day").format("MM"),
-      //     day: dayjs().add(i, "day").format("DD"),
-      //     lunar: calendar.solar2lunar(
-      //       dayjs().add(i, "day").format("YYYY"),
-      //       dayjs().add(i, "day").format("MM"),
-      //       dayjs().add(i, "day").format("DD")
-      //     ),
-      //   });
-      // }
       this.dateList = dateArr;
     },
   },

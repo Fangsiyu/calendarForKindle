@@ -28,6 +28,14 @@ export default {
       rate: 0,
     };
   },
+  watch: {
+    date: {
+      handler(val) {
+        this.updateRate();
+      },
+      immediate: true,
+    },
+  },
   computed: {
     currentDate() {
       return this.date;
