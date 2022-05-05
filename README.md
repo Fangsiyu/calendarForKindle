@@ -16,9 +16,9 @@
 
 ### 使用 
 
-## 直接下载 PDF ：
+## 直接下载 PDF （项目 PDF 文件下）：
 
-[点击下载](https://github.com/Fangsiyu/calendarForKindle/blob/main/pdf/Calendar%2520For%2520Kindle.pdf)
+[点击下载](https://github.com/Fangsiyu/calendarForKindle/blob/main/pdf/Calendar%20For%20Kindle.pdf)
 
 ## Project setup
 ```
