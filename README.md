@@ -14,7 +14,9 @@
 - [ ] ...
 
 
-### 使用 
+### 使用配置预览
+![配置预览](https://github.com/Fangsiyu/calendarForKindle/blob/main/src/assets/setting.png)
+
 
 ## 直接下载 PDF （项目 PDF 文件下）：
 
