@@ -46,6 +46,7 @@ export default {
         watermark: true,
         watermarkText: "" || "Calendar For Kindle By Xiaoxin",
         desc: "",
+        autoPrint: false,
       },
     };
   },
@@ -57,9 +58,11 @@ export default {
     this.form = Object.assign(this.form, JSON.parse(this.$route.query.form));
     this.init();
 
-    // setTimeout(() => {
-    //   window.print();
-    // }, 1000);
+    if (this.form.autoPrint) {
+      setTimeout(() => {
+        window.print();
+      }, 1000);
+    }
   },
   methods: {
     //初始化
@@ -71,9 +74,8 @@ export default {
       let dateArr = [];
       let start = dayjs(this.form.dateRange[0]).valueOf();
       let end = dayjs(this.form.dateRange[1]).valueOf();
-      let i = 1;
+      let i = 0;
       while (start <= end) {
-        
         // dateArr.push(dayjs(start));
         // start = dayjs(start).add(1, "day");
         dateArr.push({
@@ -105,7 +107,6 @@ export default {
   padding: 5mm;
   width: 148mm;
   height: 210mm;
-  // border: 1px solid #000;
   border-radius: 20px;
   font-weight: bold;
   page-break-before: always;

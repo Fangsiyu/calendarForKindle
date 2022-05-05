@@ -1,5 +1,7 @@
 <template>
-  <h3>Calendar For Kindle</h3>
+  <div class="title">
+    <span>Calendar For Kindle</span>
+  </div>
   <div class="index">
     <div class="form-box">
       <el-form
@@ -42,10 +44,23 @@
             clearable
           />
         </el-form-item>
+        <el-form-item label="自动弹窗打印">
+          <el-switch v-model="form.autoPrint" />
+        </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="onSubmit">生成</el-button>
           <el-button @click="resetForm">重置</el-button>
         </el-form-item>
+        <el-alert
+          title="1.日期范围不建议选择过大，会影响浏览器生成 PDF 速度。"
+          :closable="false"
+          type="warning"
+        />
+        <el-alert
+          title="2.PDF 利用浏览器打印功能，另存为 PDF 即可。"
+          :closable="false"
+          type="warning"
+        />
       </el-form>
     </div>
     <div class="form-preview">
@@ -94,13 +109,18 @@ const form = reactive({
   watermark: true,
   watermarkText: "Calendar For Kindle By Xiaoxin",
   desc: "",
+  autoPrint: true,
 });
 const shortcuts = [
   {
     text: "一年",
     value: () => {
       const start = new Date();
-      const end = new Date(new Date().getFullYear() + 1, new Date().getMonth());
+      const end = new Date(
+        new Date().getFullYear() + 1,
+        new Date().getMonth(),
+        new Date().getDay() + 1
+      );
       return [start, end];
     },
   },
@@ -108,7 +128,11 @@ const shortcuts = [
     text: "二年",
     value: () => {
       const start = new Date();
-      const end = new Date(new Date().getFullYear() + 2, new Date().getMonth());
+      const end = new Date(
+        new Date().getFullYear() + 2,
+        new Date().getMonth(),
+        new Date().getDay() + 1
+      );
       return [start, end];
     },
   },
@@ -116,7 +140,11 @@ const shortcuts = [
     text: "三年",
     value: () => {
       const start = new Date();
-      const end = new Date(new Date().getFullYear() + 3, new Date().getMonth());
+      const end = new Date(
+        new Date().getFullYear() + 3,
+        new Date().getMonth(),
+        new Date().getDay() + 1
+      );
       return [start, end];
     },
   },
@@ -160,7 +188,11 @@ const resetForm = () => {
 onMounted(() => {
   form.dateRange = [
     new Date(),
-    new Date(new Date().getFullYear() + 1, new Date().getMonth()),
+    new Date(
+      new Date().getFullYear() + 1,
+      new Date().getMonth(),
+      new Date().getDay() + 1
+    ),
   ];
   result.year = dayjs(form.dateRange[0]).format("YYYY");
   result.month = dayjs(form.dateRange[0]).format("MM");
@@ -168,16 +200,41 @@ onMounted(() => {
 });
 </script>
 <style lang="less" scoped>
-h3 {
+.title {
   font-family: "Caveat", cursive;
-  font-size: 40px;
+  font-size: 50px;
   font-weight: 600;
   margin: 20px 0;
   text-align: center;
+  text-align: center;
+  > span {
+    padding-right: 5px;
+    color: transparent;
+    background-image: repeating-linear-gradient(
+      to right,
+      red,
+      orange,
+      yellow,
+      green,
+      rgb(0, 208, 159),
+      blue,
+      indigo,
+      red
+    );
+    -webkit-background-clip: text;
+    animation: run 10s linear infinite alternate;
+  }
+}
+@keyframes run {
+  from {
+    backgroud-position: 0 800px;
+  }
+  to {
+    background-position: 800px 0;
+  }
 }
 .index {
   display: flex;
-  padding: 20px;
   max-width: 1000px;
   margin: 0 auto;
   > .form-box {
